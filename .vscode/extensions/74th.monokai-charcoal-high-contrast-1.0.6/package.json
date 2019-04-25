@@ -1,0 +1,34 @@
+{
+	"name": "monokai-charcoal-high-contrast",
+	"displayName": "Monokai Charcoal high contrast",
+	"description": "monokai Charcoal with High Contrast frame",
+	"version": "1.0.6",
+	"publisher": "74th",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/74th/vscode-monokaicharcoal"
+	},
+	"homepage": "https://github.com/74th/vscode-monokaicharcoal",
+	"engines": {
+		"vscode": "^1.28.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"icon": "icon.png",
+	"contributes": {
+		"configuration": {},
+		"themes": [
+			{
+				"label": "monokai-chacoral(HC)",
+				"uiTheme": "hc-black",
+				"path": "./themes/Monokai-Charcoal.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "005e6dee-403c-4ffe-a726-2f5ce31ae2b0",
+		"publisherId": "3cef02ed-b83e-4b08-b16f-d427ad5fa333",
+		"publisherDisplayName": "74th"
+	}
+}

@@ -1,0 +1,251 @@
+{
+	"name": "vscode-intelephense-client",
+	"displayName": "PHP Intelephense",
+	"description": "High performance, feature rich PHP intellisense",
+	"author": {
+		"name": "Ben Mewburn",
+		"email": "ben@mewburn.id.au"
+	},
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"version": "1.0.7",
+	"publisher": "bmewburn",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Linters",
+		"Formatters"
+	],
+	"preview": false,
+	"activationEvents": [
+		"onLanguage:php"
+	],
+	"keywords": [
+		"php",
+		"intellisense",
+		"references",
+		"symbols",
+		"format",
+		"multi-root ready",
+		"language server",
+		"autocomplete",
+		"language",
+		"support"
+	],
+	"bugs": {
+		"url": "https://github.com/bmewburn/vscode-intelephense/issues"
+	},
+	"homepage": "http://intelephense.net",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bmewburn/vscode-intelephense.git"
+	},
+	"icon": "images/elephpant.png",
+	"main": "./out/src/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "php"
+			}
+		],
+		"commands": [
+			{
+				"command": "intelephense.index.workspace",
+				"title": "Index workspace",
+				"category": "Intelephense"
+			},
+			{
+				"command": "intelephense.cancel.indexing",
+				"title": "Cancel indexing",
+				"category": "Intelephense"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "intelephense.index.workspace",
+					"when": "resourceLangId == php"
+				},
+				{
+					"command": "intelephense.cancel.indexing",
+					"when": "resourceLangId == php"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "intelephense",
+			"properties": {
+				"intelephense.files.maxSize": {
+					"type": "number",
+					"default": 1000000,
+					"description": "Maximum file size in bytes.",
+					"scope": "window"
+				},
+				"intelephense.files.associations": {
+					"type": "array",
+					"default": [
+						"*.php",
+						"*.phtml"
+					],
+					"description": "Configure glob patterns to make files available for language server features.",
+					"scope": "window"
+				},
+				"intelephense.files.exclude": {
+					"type": "array",
+					"default": [
+						"**/.git/**",
+						"**/.svn/**",
+						"**/.hg/**",
+						"**/CVS/**",
+						"**/.DS_Store/**",
+						"**/node_modules/**",
+						"**/bower_components/**",
+						"**/vendor/**/{Test,test,Tests,tests}/**"
+					],
+					"description": "Configure glob patterns to exclude certain files and folders from all language server features.",
+					"scope": "window"
+				},
+				"intelephense.stubs": {
+					"type": "array",
+					"default": [
+						"apache",
+						"bcmath",
+						"bz2",
+						"calendar",
+						"com_dotnet",
+						"Core",
+						"csprng",
+						"ctype",
+						"curl",
+						"date",
+						"dba",
+						"dom",
+						"enchant",
+						"exif",
+						"fileinfo",
+						"filter",
+						"fpm",
+						"ftp",
+						"gd",
+						"hash",
+						"iconv",
+						"imap",
+						"interbase",
+						"intl",
+						"json",
+						"ldap",
+						"libxml",
+						"mbstring",
+						"mcrypt",
+						"mssql",
+						"mysql",
+						"mysqli",
+						"oci8",
+						"odcb",
+						"openssl",
+						"password",
+						"pcntl",
+						"pcre",
+						"PDO",
+						"pdo_ibm",
+						"pdo_mysql",
+						"pdo_pgsql",
+						"pdo_sqlite",
+						"pgsql",
+						"Phar",
+						"posix",
+						"pspell",
+						"readline",
+						"recode",
+						"Reflection",
+						"regex",
+						"session",
+						"shmop",
+						"SimpleXML",
+						"snmp",
+						"soap",
+						"sockets",
+						"sodium",
+						"SPL",
+						"sqlite3",
+						"standard",
+						"superglobals",
+						"sybase",
+						"sysvmsg",
+						"sysvsem",
+						"sysvshm",
+						"tidy",
+						"tokenizer",
+						"wddx",
+						"xml",
+						"xmlreader",
+						"xmlrpc",
+						"xmlwriter",
+						"Zend OPcache",
+						"zip",
+						"zlib"
+					],
+					"description": "Configure stub files for built in symbols and common extensions. The default setting includes PHP core and all bundled extensions.",
+					"scope": "window"
+				},
+				"intelephense.completion.insertUseDeclaration": {
+					"type": "boolean",
+					"default": true,
+					"description": "Use declarations will be automatically inserted for namespaced classes, traits, interfaces, functions, and constants.",
+					"scope": "window"
+				},
+				"intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": {
+					"type": "boolean",
+					"default": false,
+					"description": "Global namespace constants and functions will be fully qualified (prefixed with a backslash).",
+					"scope": "window"
+				},
+				"intelephense.format.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enables formatting",
+					"scope": "window"
+				},
+				"intelephense.trace.server": {
+					"type": "string",
+					"enum": [
+						"off",
+						"messages",
+						"verbose"
+					],
+					"default": "off",
+					"description": "Traces the communication between VSCode and the intelephense language server.",
+					"scope": "window"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"compile": "tsc -p ./",
+		"update-vscode": "node ./node_modules/vscode/bin/install",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^5.0.4",
+		"@types/mocha": "^5.2.5",
+		"@types/node": "^8.10.38",
+		"@types/semver": "^5.5.0",
+		"typescript": "^3.3.3",
+		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"fs-extra": "^7.0.1",
+		"intelephense": "^1.0.7",
+		"semver": "^5.6.0",
+		"vscode-languageclient": "^5.3.0-next.1"
+	},
+	"private": true,
+	"__metadata": {
+		"id": "ffda6552-0ad5-431b-a4fa-0905a7e4f3f0",
+		"publisherId": "3209eeb0-2b1a-4484-8c83-2627b29db88e",
+		"publisherDisplayName": "Ben Mewburn"
+	}
+}

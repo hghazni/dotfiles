@@ -1,0 +1,73 @@
+{
+	"name": "es7-react-js-snippets",
+	"displayName": "ES7 React/Redux/GraphQL/React-Native snippets",
+	"description": "Simple extensions for React, Redux and Graphql in JS/TS with ES7 syntax",
+	"version": "2.0.1",
+	"publisher": "dsznajder",
+	"icon": "images/logo.png",
+	"keywords": [
+		"snippets",
+		"react",
+		"redux",
+		"react-native",
+		"javascript",
+		"typescript"
+	],
+	"engines": {
+		"vscode": "^1.13.0"
+	},
+	"license": "SEE LICENSE",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dsznajder/vscode-es7-javascript-react-snippets"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"main": "./extension.js",
+	"activationEvents": [
+		"onCommand:extension.snippetSearch"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.snippetSearch",
+				"title": "ES7 snippet search"
+			}
+		],
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./snippets/snippets.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/snippets.json"
+			},
+			{
+				"language": "typescript",
+				"path": "./snippets/snippets.json"
+			},
+			{
+				"language": "typescriptreact",
+				"path": "./snippets/snippets.json"
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.1.4",
+		"vscode": "^1.1.25",
+		"eslint": "^4.11.0",
+		"@types/node": "^8.10.25",
+		"@types/mocha": "^2.2.42"
+	},
+	"__metadata": {
+		"id": "19804510-b475-4dae-b0f7-6ca08fd1af0c",
+		"publisherId": "7ea644b4-2d93-4979-aac5-a12afebeb762",
+		"publisherDisplayName": "dsznajder"
+	}
+}
